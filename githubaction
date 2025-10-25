@@ -1,16 +1,11 @@
 # .github/workflows/demo.yml
 
-name: CI
 on:
-    push:
-        branches: ["main"]
+    issues:
+        types: [opened, edited, milestoned]
 
-jobs:
-    build:
-        runs-on: ubuntu-latest
-
-        steps:
-            - uses: actions/checkout@v4
-
-            - name: Run a one-line script
-              run: echo Hello, world!
+    pull_request:
+        types:
+            - opened
+        branches:
+            - "releases/**"
