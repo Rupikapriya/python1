@@ -2,10 +2,23 @@
 
 on:
     issues:
-        types: [opened, edited]
+        types:
+          - opened
+          - edited
 
     pull_request:
         types:
             - opened
         branches:
             - "master/**"
+jobs:
+  example_job:
+        runs-on: ubuntu-latest
+
+        steps:
+           - name:checkout code
+             uses: actions/checkout@v4
+
+            - name: Display event info
+              run: |
+                echo "event name:${{github.event_name}}"
